@@ -11,11 +11,11 @@
 
         public function dbConnect()
         {
-            $this->$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-            $this->$server = $url["host"];
-            $this->$username = $url["user"];
-            $this->$password = $url["pass"];
-            $this->$db = substr($url["path"], 1);
+            $this->url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+            $this->server = $this->url["host"];
+            $this->username = $this->url["user"];
+            $this->password = $this->url["pass"];
+            $this->db = substr($this->url["path"], 1);
 
             try 
             {
