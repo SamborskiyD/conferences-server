@@ -1,15 +1,16 @@
 <?php
-    class Database {
-        private $host = "localhost";
-        private $db_name = "testbwt";
-        private $username = "root";
-        private $password = "";
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $server = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+    $db = substr($url["path"], 1);
 
+    class Database {
         public function dbConnect()
         {
             try 
             {
-                $conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
+                $conn = new PDO('mysql:host=' . $server . ';dbname=' . $db, $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 return $conn;
             } 
