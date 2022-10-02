@@ -69,7 +69,7 @@
             break;
 
         case "DELETE":
-            $id = $path[4];
+            $id = $path[3];
             $stmt = $conf->delete($id);
 
             if($stmt) 
