@@ -19,7 +19,7 @@
     switch($method){
 
         case "GET":
-            $id = $path[4];
+            $id = $path[3];
             if(isset($id) && is_numeric($id))
             {
                 $data = $conf->getById($id);
